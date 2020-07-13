@@ -12,4 +12,8 @@
 *.json filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.woff2 filter=lfs diff=lfs merge=lfs -text
+*.tiff filter=lfs diff=lfs merge=lfs -text
+/assets/images/double-backflip.pxd/data/456C371B-F545-4766-A346-BE98A5E85F48 filter=lfs diff=lfs merge=lfs -text
+/assets/images/double-backflip.pxd/data/AB835DC2-D333-4361-8A3E-6071CC5402DE filter=lfs diff=lfs merge=lfs -text
+*.info filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
