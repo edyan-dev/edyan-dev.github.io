@@ -188,7 +188,7 @@
   <script src="assets/theme/js/script.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-      $("#game-preview").click(
+      $("#game-preview").on('click',
         function() {
           if ($(this).attr("src") !== "assets/images/double-backflip.gif") {
             $(this).attr("src", "assets/images/double-backflip.gif");
