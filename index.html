@@ -61,7 +61,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="mbr-figure" style="width: 135%;">
-                <img id = "game-preview" src = "assets/images/double-backflip.jpg" alt="EDYAN" title="Battle Crown">
+                <img class = "game-preview" src = "assets/images/double-backflip.jpg" alt="EDYAN" title="Battle Crown">
             </div>
             <div class="media-content">
                 <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1"><strong>
@@ -85,7 +85,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="mbr-figure" style="width: 135%;">
-                <img src="assets/images/giphy-8.gif" alt="EDYAN" title="Mercenary">
+                <img class = "game-preview" src="assets/images/mercenary.jpg" alt="EDYAN" title="Mercenary">
             </div>
 
             <div class="media-content">
@@ -111,7 +111,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="mbr-figure" style="width: 130%;">
-                <img src="assets/images/bananarang.gif" alt="EDYAN" title="Bananarang Island">
+                <img class = "game-preview" src="assets/images/bananarang.jpg" alt="EDYAN" title="Bananarang Island">
             </div>
 
             <div class="media-content">
@@ -139,7 +139,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="mbr-figure" style="width: 100%;">
-                <img src="assets/images/bumpy.gif" alt="EDYAN" title="Bumpy Road">
+                <img class = "game-preview" src="assets/images/bumpy.jpg" alt="EDYAN" title="Bumpy Road">
 
             </div>
 
@@ -188,18 +188,21 @@
   <script src="assets/theme/js/script.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-      $("#game-preview").on('click',
+      $('.game-preview').on('click',
         function() {
-          if ($(this).attr("src") !== "assets/images/double-backflip.gif") {
-            $(this).attr("src", "assets/images/double-backflip.gif");
+          var mediaName = $(this).attr("src");
+          var mediaExtension = mediaName.split('.').pop();
+          mediaName = mediaName.split('.')[0];
+          if (mediaExtension !== "gif") {
+            $(this).attr("src", mediaName + ".gif");
           } else {
-            $(this).attr("src", "assets/images/double-backflip.jpg");
+            $(this).attr("src", mediaName + ".jpg");
           }
+          $(this).attr("style", "filter:brightness(100%)");
         }
       );
-      $("#game-preview").hover(
+      $('.game-preview').hover(
         function() {
-
             $(this).attr("style", "filter:brightness(60%)");
         },
         function() {
