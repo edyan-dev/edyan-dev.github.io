@@ -26,8 +26,6 @@
 <body>
   <section class="menu cid-s43woloBys" once="menu" id="menu2-3">
 
-
-
     <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <div class="hamburger">
@@ -50,18 +48,15 @@
                     Telegram</a></div>
         </div>
     </nav>
+    <img id = "loader" class="loader" style="width:60px; height:60px; display:none;"></img>
 </section>
 
 <section class="engine"><a href="https://mobirise.info/s">bootstrap themes</a></section><section class="header3 cid-s43ACQeHWZ mbr-parallax-background" id="header3-d">
 
-
-
-
-
     <div class="container">
         <div class="media-container-row">
             <div class="mbr-figure" style="width: 135%;">
-                <img class = "game-preview" src = "assets/images/double-backflip.jpg" alt="EDYAN" title="Battle Crown">
+                <img class = "game-preview" src = "assets/images/double-backflip.jpg" alt="EDYAN" title="Battle Crown"></img>
             </div>
             <div class="media-content">
                 <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1"><strong>
@@ -85,7 +80,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="mbr-figure" style="width: 135%;">
-                <img class = "game-preview" src="assets/images/mercenary.jpg" alt="EDYAN" title="Mercenary">
+              <img class = "game-preview" src="assets/images/mercenary.jpg" alt="EDYAN" title="Mercenary">
             </div>
 
             <div class="media-content">
@@ -192,9 +187,21 @@
         function() {
           var mediaName = $(this).attr("src");
           var mediaExtension = mediaName.split('.').pop();
+          var mediaOffsetLeft = $(this).offset().left+$(this).width()/2-30;
+          var mediaOffsetTop = $(this).offset().top+$(this).height()/2-30;
           mediaName = mediaName.split('.')[0];
           if (mediaExtension !== "gif") {
+            var d = document.getElementById('loader');
+            d.style.position = "absolute";
+            d.style.left = mediaOffsetLeft + "px";
+            d.style.top = mediaOffsetTop + "px";
+            d.style.zIndex = "1000";
+            d.style.margin = "0 auto";
+            d.style.display = "block";
+            console.log ("Left: " + d.offsetLeft + "; Top:" + d.offsetTop + " || Left:" + mediaOffsetLeft + "; Top:" + mediaOffsetTop);
+
             $(this).attr("src", mediaName + ".gif");
+            $(this).ready(function(){d.style.display = "none";});
           } else {
             $(this).attr("src", mediaName + ".jpg");
           }
