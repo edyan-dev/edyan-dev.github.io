@@ -199,15 +199,21 @@
             d.style.margin = "0 auto";
             d.style.display = "block";
             console.log ("Left: " + d.offsetLeft + "; Top:" + d.offsetTop + " || Left:" + mediaOffsetLeft + "; Top:" + mediaOffsetTop);
-
             $(this).attr("src", mediaName + ".gif");
-            $(this).ready(function(){d.style.display = "none";});
           } else {
             $(this).attr("src", mediaName + ".jpg");
           }
           $(this).attr("style", "filter:brightness(100%)");
         }
       );
+
+      $('.game-preview').on('load', function() {
+        if ($(this).attr("src").includes(".gif")) {
+          var d = document.getElementById('loader');
+          d.style.display = "none";
+        }
+      });
+
       $('.game-preview').hover(
         function() {
             $(this).attr("style", "filter:brightness(60%)");
