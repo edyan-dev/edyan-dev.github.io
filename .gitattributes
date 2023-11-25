@@ -31,3 +31,4 @@
 * !text !filter !merge !diff
 '*.unityweb' filter=lfs diff=lfs merge=lfs -text
 '*.data.unityweb' filter=lfs diff=lfs merge=lfs -text
+Build/Knockout[[:space:]]WEBGL.data.unityweb filter=lfs diff=lfs merge=lfs -text
