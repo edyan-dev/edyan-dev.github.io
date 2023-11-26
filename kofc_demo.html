@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=600 height=960 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -55,9 +55,9 @@
       var loaderUrl = buildUrl + "/Knockout WEBGL.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/184f61e793bfcda28795e84f58017698.data.unityweb",
-        frameworkUrl: buildUrl + "/95609d2bca96e8316b834f34121d7f13.js.unityweb",
-        codeUrl: buildUrl + "/4a8d8c04fecdc91841500230f5898535.wasm.unityweb",
+        dataUrl: buildUrl + "/fe97225ee3f7d4ec740531e55f29b27e.data.unityweb",
+        frameworkUrl: buildUrl + "/690cb64bdf2363fd03e4327337d128a0.js.unityweb",
+        codeUrl: buildUrl + "/dfc1a84b3ca56430e06ee9ce94633b6b.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "EDYAN DEV",
         productName: "Knockout FC",
@@ -89,8 +89,8 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "600px";
-        canvas.style.height = "960px";
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
