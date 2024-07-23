@@ -1,118 +1,254 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | Knockout FC</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
-  <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.12.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.12.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
+  <meta name="description" content="">
+
+
+  <title>Home</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/animatecss/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+</head>
+<body>
+  <section class="menu cid-s43woloBys" once="menu" id="menu2-3">
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-1" href="index.html">
+                        EDYAN</a></span>
+            </div>
         </div>
-      </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-logo-title-footer"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Knockout FC</div>
-      </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-secondary display-4" href="mailto:edyan@protonmail.com"><span class="mbri-letter mbr-iconfont mbr-iconfont-btn" style="font-size: 40px;"></span>E-mail</a> <a class="btn btn-sm btn-secondary display-4" href="tg://resolve?domain=edyanDev"><span class="socicon socicon-telegram mbr-iconfont mbr-iconfont-btn" style="font-size: 40px; color: rgb(255, 255, 255);"></span>
+                    Telegram</a></div>
+        </div>
+    </nav>
+    <img id = "loader" class="loader" style="width:60px; height:60px; display:none;"></img>
+</section>
+
+<section class="header3 cid-s43ACQeHWZ mbr-parallax-background" id="header3-d">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-figure" style="width: 135%;">
+                <img class = "game-preview" src = "assets/images/double-backflip.jpg" alt="EDYAN" title="Battle Crown"></img>
+            </div>
+            <div class="media-content">
+                <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1"><strong>
+                    Battle Crown</strong></h1>
+
+                <div class="mbr-section-text mbr-white pb-3 ">
+                    <p class="mbr-text mbr-fonts-style display-5">Gesture-based mobile fighting game with physics impact, where famous historycal warriors face each other for the symbol of martial superiority - the Battle Crown.</p>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <script>
-      var canvas = document.querySelector("#unity-canvas");
+</section>
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        var warningBanner = document.querySelector("#unity-warning");
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+<section class="header3 cid-s4l7RYcCfO mbr-parallax-background" id="header3-f">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-figure" style="width: 135%;">
+              <img class = "game-preview" src="assets/images/mercenary.jpg" alt="EDYAN" title="Mercenary">
+            </div>
+
+            <div class="media-content">
+                <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1"><strong>
+                    Mercenary</strong></h1>
+
+                <div class="mbr-section-text mbr-white pb-3 ">
+                    <p class="mbr-text mbr-fonts-style display-5">Outsource project. Deep midcore isometric stealth-action mobile game in an alternative medieval setting. The game contains, but is not limited to, stealth combat system, noises and field of view, light-shadow mechanics, body drag and hide, freerun mechanics.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="header3 cid-s4kStUzPKv" id="header3-e">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-figure" style="width: 130%;">
+                <img class = "game-preview" src="assets/images/bananarang.jpg" alt="EDYAN" title="Bananarang Island">
+            </div>
+
+            <div class="media-content">
+                <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1"><strong>
+                    Bananarang</strong> <strong>Island</strong><br></h1>
+
+                <div class="mbr-section-text mbr-white pb-3 ">
+                    <p class="mbr-text mbr-fonts-style display-5">
+                        Casual mobile aiming/timing game, where Player has to feed monkeys with bananas on a tropical island. Other island inhabitants are not into bananas, so Player should avoid bumping them with one.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="header3 cid-s4lh5eALSO mbr-parallax-background" id="header3-g">
+    <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
+    </div>
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-figure" style="width: 100%;">
+                <img class = "game-preview" src="assets/images/bumpy.jpg" alt="EDYAN" title="Bumpy Road">
+
+            </div>
+
+            <div class="media-content">
+                <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1"><strong>
+                    Bumpy Road</strong></h1>
+
+                <div class="mbr-section-text mbr-white pb-3 ">
+                    <p class="mbr-text mbr-fonts-style display-5">Outsource project. Hyper-casual mobile game, where player has to change wheel size to get past road obstacles and get away from police.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="header3 cid-111 mbr-parallax-background" id="header3-h">
+
+  <div class="container">
+
+      <div class="media-container-row">
+          <div class="mbr-figure" style="width: 50%;">
+              <img class = "game-preview" src = "assets/images/planetres.jpg" alt="EDYAN" title="Planet resources"></img>
+          </div>
+          <div class="media-content">
+              <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1"><strong>
+                  Planet resources</strong></h1>
+
+              <div class="mbr-section-text mbr-white pb-3 ">
+                  <p class="mbr-text mbr-fonts-style display-5">Casual mobile game about resource gathering balance. Humanity has to gather resources to survive, but ship must leave planet orbit before the ecosystem depletes completely and planet explodes.</p>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="header3 cid-222 id="header3-g">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-figure" style="width: 100%;">
+                <img class = "game-preview" src="assets/images/radialmaze.jpg" alt="EDYAN" title="Radial Maze">
+
+            </div>
+
+            <div class="media-content">
+                <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1"><strong>
+                    Round Maze</strong></h1>
+
+                <div class="mbr-section-text mbr-white pb-3 ">
+                    <p class="mbr-text mbr-fonts-style display-5">Hyper-casual mobile game made in one day, where player controls current circle ring instead of a ball. Gravity changes in different directions.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section once="footers" class="cid-s4mPrVuYa5" id="footer6-p">
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="col-12">
+                <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                    © Copyright 2020 EDYAN - All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>
+  <script src="assets/parallax/jarallax.min.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.game-preview').on('click',
+        function() {
+          var mediaName = $(this).attr("src");
+          var mediaExtension = mediaName.split('.').pop();
+          var mediaOffsetLeft = $(this).offset().left+$(this).width()/2-30;
+          var mediaOffsetTop = $(this).offset().top+$(this).height()/2-30;
+          mediaName = mediaName.split('.')[0];
+          if (mediaExtension !== "gif") {
+            var d = document.getElementById('loader');
+            d.style.position = "absolute";
+            d.style.left = mediaOffsetLeft + "px";
+            d.style.top = mediaOffsetTop + "px";
+            d.style.zIndex = "1000";
+            d.style.margin = "0 auto";
+            d.style.display = "block";
+            console.log ("Left: " + d.offsetLeft + "; Top:" + d.offsetTop + " || Left:" + mediaOffsetLeft + "; Top:" + mediaOffsetTop);
+            $(this).attr("src", mediaName + ".gif");
+          } else {
+            $(this).attr("src", mediaName + ".jpg");
+          }
+          $(this).attr("style", "filter:brightness(100%)");
         }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
+      );
+
+      $('.game-preview').on('load', function() {
+        if ($(this).attr("src").includes(".gif")) {
+          var d = document.getElementById('loader');
+          d.style.display = "none";
         }
-        updateBannerVisibility();
-      }
+      });
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Knockout WEBGL.loader.js";
-      var config = {
-        arguments: [],
-        dataUrl: buildUrl + "/Knockout WEBGL.data.unityweb",
-        frameworkUrl: buildUrl + "/Knockout WEBGL.framework.js.unityweb",
-        codeUrl: buildUrl + "/Knockout WEBGL.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "EDYAN DEV",
-        productName: "Knockout FC",
-        productVersion: "0.1",
-        showBanner: unityShowBanner,
-      };
-
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        document.querySelector("#unity-container").className = "unity-mobile";
-        canvas.className = "unity-mobile";
-
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+      $('.game-preview').hover(
+        function() {
+            $(this).attr("style", "filter:brightness(60%)");
+        },
+        function() {
+            $(this).attr("style", "filter:brightness(100%)");
+        }
+      );
+    });
+  </script>
 
 
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
-
-      document.querySelector("#unity-loading-bar").style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
-
-              }).catch((message) => {
-                alert(message);
-              });
-            };
-
-      document.body.appendChild(script);
-
-    </script>
+  <input name="animation" type="hidden">
+   <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
   </body>
 </html>
