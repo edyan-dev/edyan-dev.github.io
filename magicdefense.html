@@ -1,323 +1,122 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="./style.css">
-
-    <!-- Yandex Games SDK -->
-    <script src="/sdk.js"></script>
-
-    <style>
-        canvas:focus {
-            outline: none;
-        }
-
-        html, body {
-            padding: 0;
-            margin: 0;
-            overflow: hidden;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-tap-highlight-color: rgba(0,0,0,0);
-            height: 100%;
-        }
-    </style>
-
-    <!-- Additional head modules -->
-
-</head>
-<body class="dark">
-
+    <title>Unity WebGL Player | Magic Defense</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
     <div id="unity-container" class="unity-desktop">
-        <canvas id="unity-canvas" tabindex="-1"></canvas>
-    </div>
-    <div id="loading-cover" style="display:none;">
-        <div id="unity-loading-bar">
-            <div id="unity-logo"><img src="Images/logo.png"></div>
-            <div id="unity-progress-bar-empty" style="display: none;">
-                <div id="unity-progress-bar-full"></div>
-            </div>
-            <div class="spinner"></div>
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
         </div>
+      </div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Magic Defense</div>
+      </div>
     </div>
-
-    <!-- Additional body modules -->
-
     <script>
-        const hideFullScreenButton = "";
-        const buildUrl = "Build";
-        const loaderUrl = buildUrl + "/Castle Defense WEBGL.loader.js";
-        const config = {
-            dataUrl: buildUrl + "/Castle Defense WEBGL.data.br",
-            frameworkUrl: buildUrl + "/Castle Defense WEBGL.framework.js.br",
-            codeUrl: buildUrl + "/Castle Defense WEBGL.wasm.br",
-        symbolsUrl: buildUrl + "/Castle Defense WEBGL.symbols.json.br",
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Castle Defense WEBGL.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Castle Defense WEBGL.data.br",
+        frameworkUrl: buildUrl + "/Castle Defense WEBGL.framework.js.br",
+        codeUrl: buildUrl + "/Castle Defense WEBGL.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
-            companyName: "EDYAN DEV",
-            productName: "Magic Defense",
-            productVersion: "0.1.0"
-        };
+        companyName: "EDYAN DEV",
+        productName: "Magic Defense",
+        productVersion: "0.1.0",
+        showBanner: unityShowBanner,
+      };
 
-        const container = document.querySelector("#unity-container");
-        const canvas = document.querySelector("#unity-canvas");
-        const loadingCover = document.querySelector("#loading-cover");
-        const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
-        const progressBarFull = document.querySelector("#unity-progress-bar-full");
-        const spinner = document.querySelector('.spinner');
+      // By default, Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
 
-        const canFullscreen = (function () {
-            for (const key of [
-                'exitFullscreen',
-                'webkitExitFullscreen',
-                'webkitCancelFullScreen',
-                'mozCancelFullScreen',
-                'msExitFullscreen',
-            ]) {
-                if (key in document) {
-                    return true;
-                }
-            }
-            return false;
-        }());
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
 
-        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            container.className = "unity-mobile";
-            
-        }
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+        canvas.className = "unity-mobile";
 
-        // The background image when loading the game. When building a build, the code changes depending on the project settings.
-        
-        loadingCover.style.display = "";
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
 
-        let StartUnityInstance;
-        let ygGameInstance = null;
-        let ysdk = null;
-        let initYSDK = false;
-        let initGame = false;
-        let syncInit = false;
-        const NO_DATA = 'no data';
 
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        function FocusGame() {
-            window.focus();
-            canvas.focus();
-        }
-        window.addEventListener('pointerdown', () => {
-            FocusGame();
-        });
-        window.addEventListener('touchstart', () => {
-            FocusGame();
-        });
+      } else {
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        document.addEventListener('visibilitychange', function () {
-            if (ysdk !== null && initGame == true) {
-                if (document.hidden) {
-                    YG2Instance('SetFocusWindowGame', 'false');
-                }
-                else {
-                    YG2Instance('SetFocusWindowGame', 'true');
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
 
-                    if ((ysdk.deviceInfo.isMobile() || ysdk.deviceInfo.isTablet()) && ysdk.screen.fullscreen.status == 'off')
-                        ysdk.screen.fullscreen.request();
-                }
-            }
-        });
+      loadingBar.style.display = "block";
 
-        const script = document.createElement("script");
-        script.src = loaderUrl;
-        script.onload = () => {
-            StartUnityInstance = function () {
-                createUnityInstance(canvas, config, (progress) => {
-                    spinner.style.display = "none";
-                    progressBarEmpty.style.display = "";
-                    const adjustedProgress = Math.max(progress, 0.05);
-                    progressBarFull.style.width = `${100 * adjustedProgress}%`;
-                }).then((unityInstance) => {
-                    ygGameInstance = unityInstance;
-                    loadingCover.style.display = "none";
-                }).catch((message) => {
-                    console.error(message);
-                });
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+              }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+                fullscreenButton.onclick = () => {
+                  unityInstance.SetFullscreen(1);
+                };
+              }).catch((message) => {
+                alert(message);
+              });
             };
-            
-            if (LocalHost() || syncInit)
-                StartUnityInstance_IfUnloaded();
-        };
 
-        function StartUnityInstance_IfUnloaded() {
-            if (spinner.style.display !== "none")
-                StartUnityInstance();
-        }
+      document.body.appendChild(script);
 
-        function LocalHost() {
-            var host = window.location.hostname;
-            if (host == "localhost" || host == "127.0.0.1")
-                return true;
-            else return false;
-        }
-
-        function YG2Instance(method) {
-            if (ygGameInstance == null)
-                return;
-
-            if (!initGame) {
-                setTimeout(function () {
-                    if (ygGameInstance)
-                        ygGameInstance.SendMessage('YG2Instance', method);
-                }, 100);
-            }
-            else {
-                ygGameInstance.SendMessage('YG2Instance', method);
-            }
-                
-        }
-        function YG2Instance(method, arg) {
-            if (ygGameInstance == null)
-                return;
-
-            if (!initGame) {
-                setTimeout(function () {
-                    ygGameInstance.SendMessage('YG2Instance', method, arg);
-                }, 100);
-            }
-            else {
-                ygGameInstance.SendMessage('YG2Instance', method, arg);
-            }
-        }
-
-        function LogStyledMessage(message, style) {
-            console.log('%c' + message, style);
-        }
-        function LogStyledMessage(message) {
-            console.log('%c' + message, 'color: #FFDF73; background-color: #454545');
-        }
-
-        InitYSDK();
-        async function InitYSDK() {
-            try {
-                if (LocalHost()) return;
-
-                ysdk = await YaGames.init();
-
-                // Additional init0 modules
-InterAdvShow();
-
-
-                // Additional init1 modules
-
-                // Additional init2 modules
-
-                // Additional init modules
-
-                initYSDK = true;
-                if (ygGameInstance != null)
-                    ygGameInstance.SendMessage('YG2Instance', 'InitSDKComplete');
-
-                LogStyledMessage('Init YandexSDK Success');
-
-            } catch (e) {
-                console.error('CRASH Initialization SDK: ', e);
-            }
-
-            if (!LocalHost() && !syncInit)
-                StartUnityInstance_IfUnloaded();
-        }
-
-        function InitGame() {
-            initGame = true;
-
-            // Additional start modules
-setTimeout(function () {
-    if (nowFullAdOpen == true)
-        YG2Instance('OpenInterAdv');
-}, 100);
-
-        }
-
-        // Additional script modules
-LogStyledMessage('PluginYG2 v2.002  build: 16');
-
-
-function RewardedAdvShow(id) {
-    try {
-        ysdk.adv.showRewardedVideo(
-            {
-                callbacks:
-                {
-                    onOpen: () => {
-                        LogStyledMessage('Opened Rewarded Adv');
-                        YG2Instance('OpenRewardedAdv');
-                    },
-                    onClose: () => {
-                        LogStyledMessage('Closed Rewarded Adv');
-                        YG2Instance('CloseRewardedAdv');
-                        FocusGame();
-                    },
-                    onRewarded: () => {
-                        LogStyledMessage('Reward Adv');
-                        YG2Instance('RewardAdv', id);
-                    },
-                    onError: (err) => {
-                        console.error('Error Rewarded Adv', err);
-                        YG2Instance('ErrorRewardedAdv');
-                    }
-                }
-            });
-    } catch (err) {
-        console.error('CRASH Rewarded Adv Show: ', err.message);
-    }
-}
-
-
-let nowFullAdOpen = false;
-
-function InterAdvShow() {
-    try {
-        if (nowFullAdOpen !== true && ysdk !== null) {
-            ysdk.adv.showFullscreenAdv(
-                {
-                    callbacks: {
-                        onOpen: () => {
-                            LogStyledMessage('Open Interstitial Adv');
-                            nowFullAdOpen = true;
-                            if (initGame === true) {
-                                YG2Instance('OpenInterAdv');
-                            }
-                        },
-                        onClose: (wasShown) => {
-                            nowFullAdOpen = false;
-                            if (initGame === true) {
-                                if (wasShown) {
-                                    YG2Instance('CloseInterAdv', 'true');
-                                }
-                                else {
-                                    YG2Instance('CloseInterAdv', 'false');
-                                }
-                            }
-                            FocusGame();
-                        },
-                        onError: (error) => {
-                            console.error('Error Interstitial Adv', error);
-                            YG2Instance('ErrorInterAdv');
-                            FocusGame();
-                        }
-                    }
-                });
-        }
-    }
-    catch (e) {
-        console.error('CRASH Interstitial Adv Show: ', e.message);
-    }
-}
-
-
-        document.body.appendChild(script);
     </script>
-</body>
+  </body>
 </html>
